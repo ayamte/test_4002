@@ -1,0 +1,905 @@
+/* Variables de couleurs ChronoGaz */  
+:root {  
+  --primary-blue: #1F55A3;  
+  --secondary-blue: #3498db;  
+  --dark-gray: #34495e;  
+  --light-gray: #ecf0f1;  
+  --white: #ffffff;  
+  --red: #e74c3c;  
+  --dark-red: #c0392b;  
+  --light-blue: #164a91;  
+  --green: #059669;  
+  --orange: #ea580c;  
+}  
+  
+/* Layout principal */  
+.eor-layout {  
+  display: flex;  
+  min-height: 100vh;  
+  background-color: #f9fafb;  
+}  
+  
+.eor-wrapper {  
+  margin-left: 256px;  
+  margin-top: 70px;  
+  min-height: calc(100vh - 70px);  
+  background-color: #f8f9fa;  
+  padding: 24px;  
+  transition: margin-left 0.3s ease, width 0.3s ease;  
+  width: calc(100vw - 256px);  
+}  
+  
+/* Ajustement quand sidebar collapsed */  
+body.sidebar-collapsed .eor-wrapper {  
+  margin-left: 64px;  
+  width: calc(100vw - 64px);  
+}  
+  
+.eor-container {  
+  max-width: 1280px;  
+  margin: 0 auto;  
+}  
+  
+.eor-content {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 1.5rem;  
+}  
+  
+/* Header */  
+.eor-header {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  margin-bottom: 1.5rem;  
+}  
+  
+.eor-header-left {  
+  display: flex;  
+  align-items: center;  
+  gap: 1rem;  
+}  
+  
+.eor-back-button {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+  padding: 0.5rem 1rem;  
+  background: transparent;  
+  border: 1px solid #d1d5db;  
+  border-radius: 0.375rem;  
+  color: #374151;  
+  cursor: pointer;  
+  font-size: 0.875rem;  
+  transition: all 0.2s;  
+}  
+  
+.eor-back-button:hover {  
+  background-color: #f9fafb;  
+}  
+  
+.eor-back-icon {  
+  width: 1rem;  
+  height: 1rem;  
+}  
+  
+.eor-title-section {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+}  
+  
+.eor-title-icon {  
+  width: 2rem;  
+  height: 2rem;  
+  color: #2563eb;  
+}  
+  
+.eor-title {  
+  font-size: 1.5rem;  
+  font-weight: 700;  
+  color: #111827;  
+  margin: 0;  
+}  
+  
+/* Overview Section */  
+.eor-overview {  
+  background: white;  
+  border-radius: 0.5rem;  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+  padding: 1.5rem;  
+  margin-bottom: 1.5rem;  
+}  
+  
+.eor-overview-title {  
+  font-size: 1.25rem;  
+  font-weight: 700;  
+  color: #111827;  
+  margin: 0 0 1rem 0;  
+}  
+  
+.eor-overview-info {  
+  display: flex;  
+  gap: 2rem;  
+  flex-wrap: wrap;  
+}  
+  
+.eor-overview-item {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+  color: #6b7280;  
+  font-size: 0.875rem;  
+}  
+  
+.eor-overview-icon {  
+  width: 1rem;  
+  height: 1rem;  
+}  
+  
+/* Statistics Grid */  
+.eor-stats-grid {  
+  display: grid;  
+  grid-template-columns: repeat(5, 1fr);  
+  gap: 1rem;  
+  margin-bottom: 1.5rem;  
+}  
+  
+@media (max-width: 1024px) {  
+  .eor-stats-grid {  
+    grid-template-columns: repeat(2, 1fr);  
+  }  
+}  
+  
+@media (max-width: 640px) {  
+  .eor-stats-grid {  
+    grid-template-columns: 1fr;  
+  }  
+}  
+  
+.eor-stat-card {  
+  background: white;  
+  border-radius: 0.5rem;  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+  padding: 1rem;  
+}  
+  
+.eor-stat-content {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+}  
+  
+.eor-stat-info {  
+  flex: 1;  
+}  
+  
+.eor-stat-label {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  color: #6b7280;  
+  margin: 0 0 0.25rem 0;  
+}  
+  
+.eor-stat-value {  
+  font-size: 1.5rem;  
+  font-weight: 700;  
+  color: #111827;  
+  margin: 0;  
+}  
+  
+.eor-stat-icon {  
+  width: 2rem;  
+  height: 2rem;  
+}  
+  
+/* Color Classes */  
+.eor-text-green {  
+  color: var(--green);  
+}  
+  
+.eor-text-blue {  
+  color: #2563eb;  
+}  
+  
+.eor-text-orange {  
+  color: var(--orange);  
+}  
+  
+.eor-text-red {  
+  color: var(--red);  
+}  
+  
+.eor-text-gray {  
+  color: #6b7280;  
+}  
+  
+/* Main Grid */  
+.eor-main-grid {  
+  display: grid;  
+  grid-template-columns: 2fr 1fr;  
+  gap: 1.5rem;  
+}  
+  
+@media (max-width: 1024px) {  
+  .eor-main-grid {  
+    grid-template-columns: 1fr;  
+  }  
+}  
+  
+.eor-left-column,  
+.eor-right-column {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 1.5rem;  
+}  
+  
+/* Cards */  
+.eor-card {  
+  background: white;  
+  border-radius: 0.5rem;  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+  overflow: hidden;  
+}  
+  
+.eor-card-header {  
+  padding: 1rem 1.5rem;  
+  border-bottom: 1px solid #e5e7eb;  
+  background-color: #f9fafb;  
+}  
+  
+.eor-card-title {  
+  font-size: 1.125rem;  
+  font-weight: 600;  
+  color: #111827;  
+  margin: 0;  
+}  
+  
+.eor-card-content {  
+  padding: 1.5rem;  
+}  
+  
+/* Deliveries List */  
+.eor-deliveries-list {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 1rem;  
+}  
+  
+.eor-delivery-item {  
+  border: 1px solid #e5e7eb;  
+  border-radius: 0.5rem;  
+  padding: 1rem;  
+  background-color: #ffffff;  
+}  
+  
+.eor-delivery-header {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: flex-start;  
+  margin-bottom: 0.75rem;  
+}  
+  
+.eor-delivery-info {  
+  flex: 1;  
+}  
+  
+.eor-delivery-customer {  
+  font-size: 1rem;  
+  font-weight: 600;  
+  color: #111827;  
+  margin: 0 0 0.5rem 0;  
+}  
+  
+.eor-delivery-status {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.25rem;  
+  padding: 0.25rem 0.5rem;  
+  border-radius: 0.25rem;  
+  font-size: 0.75rem;  
+  font-weight: 500;  
+  border: 1px solid;  
+  width: fit-content;  
+}  
+  
+.eor-status-delivered {  
+  background-color: #dcfce7;  
+  color: #166534;  
+  border-color: #bbf7d0;  
+}  
+  
+.eor-status-partial {  
+  background-color: #fff7ed;  
+  color: #c2410c;  
+  border-color: #fed7aa;  
+}  
+  
+.eor-status-failed {  
+  background-color: #fef2f2;  
+  color: #991b1b;  
+  border-color: #fecaca;  
+}  
+  
+.eor-status-default {  
+  background-color: #f3f4f6;  
+  color: #374151;  
+  border-color: #d1d5db;  
+}  
+  
+.eor-status-icon {  
+  width: 0.75rem;  
+  height: 0.75rem;  
+}  
+  
+.eor-status-text {  
+  margin-left: 0.25rem;  
+}  
+  
+.eor-delivery-order {  
+  font-size: 0.875rem;  
+  color: #6b7280;  
+  margin-bottom: 0.5rem;  
+}  
+  
+.eor-delivery-address {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+  font-size: 0.875rem;  
+  color: #6b7280;  
+  margin-bottom: 0.75rem;  
+}  
+  
+.eor-address-icon {  
+  width: 0.75rem;  
+  height: 0.75rem;  
+}  
+  
+/* Delivery Times */  
+.eor-delivery-times {  
+  display: grid;  
+  grid-template-columns: 1fr 1fr;  
+  gap: 1rem;  
+  margin-bottom: 0.75rem;  
+}  
+  
+@media (max-width: 768px) {  
+  .eor-delivery-times {  
+    grid-template-columns: 1fr;  
+    gap: 0.5rem;  
+  }  
+}  
+  
+.eor-time-item {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.25rem;  
+}  
+  
+.eor-time-label {  
+  font-size: 0.75rem;  
+  color: #6b7280;  
+}  
+  
+.eor-time-value {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  color: #374151;  
+}  
+  
+/* Delivery Products */  
+.eor-delivery-products {  
+  margin-bottom: 0.75rem;  
+}  
+  
+.eor-products-title {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  color: #374151;  
+  margin: 0 0 0.5rem 0;  
+}  
+  
+.eor-products-list {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.5rem;  
+}  
+  
+.eor-product-item {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  font-size: 0.875rem;  
+}  
+  
+.eor-product-info {  
+  flex: 1;  
+}  
+  
+.eor-product-name {  
+  font-weight: 500;  
+  color: #374151;  
+}  
+  
+.eor-product-code {  
+  color: #6b7280;  
+  margin-left: 0.5rem;  
+}  
+  
+.eor-product-quantity {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+}  
+  
+.eor-quantity {  
+  font-weight: 500;  
+}  
+  
+.eor-discrepancy-badge {  
+  background-color: #f3f4f6;  
+  color: #374151;  
+  padding: 0.125rem 0.375rem;  
+  border-radius: 0.25rem;  
+  font-size: 0.75rem;  
+  font-weight: 500;  
+  border: 1px solid #d1d5db;  
+}  
+  
+/* Delivery Issues */  
+.eor-delivery-issues {  
+  margin-bottom: 0.75rem;  
+}  
+  
+.eor-issues-title {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  color: #374151;  
+  margin: 0 0 0.5rem 0;  
+}  
+  
+.eor-issues-list {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.25rem;  
+}  
+  
+.eor-issue-item {  
+  display: flex;  
+  align-items: flex-start;  
+  gap: 0.5rem;  
+  padding: 0.5rem;  
+  background-color: #fffbeb;  
+  border: 1px solid #fed7aa;  
+  border-radius: 0.375rem;  
+}  
+  
+.eor-issue-icon {  
+  width: 1rem;  
+  height: 1rem;  
+  color: #d97706;  
+  flex-shrink: 0;  
+  margin-top: 0.125rem;  
+}  
+  
+.eor-issue-content {  
+  flex: 1;  
+}  
+  
+.eor-issue-type {  
+  font-weight: 500;  
+  color: #92400e;  
+}  
+  
+.eor-issue-description {  
+  color: #92400e;  
+  margin-left: 0.25rem;  
+}  
+  
+/* Customer Notes */  
+.eor-customer-notes {  
+  background-color: #f9fafb;  
+  border-radius: 0.375rem;  
+  padding: 0.75rem;  
+}  
+  
+.eor-notes-label {  
+  font-size: 0.75rem;  
+  color: #6b7280;  
+  margin: 0 0 0.25rem 0;  
+}  
+  
+.eor-notes-text {  
+  font-size: 0.875rem;  
+  color: #374151;  
+  margin: 0;  
+}  
+  
+/* Summary Section */  
+.eor-summary-section {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.75rem;  
+}  
+  
+.eor-summary-item {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+}  
+  
+.eor-summary-label {  
+  font-size: 0.875rem;  
+  color: #6b7280;  
+}  
+  
+.eor-summary-value {  
+  font-weight: 600;  
+  color: #374151;  
+}  
+  
+/* Form Elements */  
+.eor-form-group {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.5rem;  
+}  
+  
+.eor-label {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  color: #374151;  
+}  
+  
+.eor-textarea {  
+  width: 100%;  
+  min-width: 0;  
+  padding: 0.5rem 0.75rem;  
+  border: 1px solid #d1d5db;  
+  border-radius: 0.375rem;  
+  font-size: 0.875rem;  
+  transition: border-color 0.2s, box-shadow 0.2s;  
+  box-sizing: border-box;  
+  resize: vertical;  
+  min-height: 4rem;  
+}  
+  
+.eor-textarea:focus {  
+  outline: none;  
+  border-color: #2563eb;  
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);  
+}  
+  
+.eor-textarea:disabled {  
+  background-color: #f9fafb;  
+  color: #6b7280;  
+  cursor: not-allowed;  
+}  
+  
+/* Actions Section */  
+.eor-actions-section {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 1rem;  
+}  
+  
+.eor-export-actions {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.5rem;  
+}  
+  
+/* Separator */  
+.eor-separator {  
+  height: 1px;  
+  background-color: #e5e7eb;  
+  margin: 1rem 0;  
+}  
+  
+/* Buttons */  
+.eor-btn {  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  gap: 0.5rem;  
+  padding: 0.5rem 1rem;  
+  border-radius: 0.375rem;  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  border: none;  
+  cursor: pointer;  
+  transition: all 0.2s;  
+  text-decoration: none;  
+  width: 100%;  
+}  
+  
+.eor-btn:disabled {  
+  opacity: 0.5;  
+  cursor: not-allowed;  
+}  
+  
+.eor-btn-primary {  
+  background-color: var(--primary-blue);  
+  color: white;  
+}  
+  
+.eor-btn-primary:hover:not(:disabled) {  
+  background-color: var(--light-blue);  
+  transform: translateY(-1px);  
+}  
+  
+.eor-btn-secondary {  
+  background-color: transparent;  
+  color: #374151;  
+  border: 1px solid #d1d5db;  
+}  
+  
+.eor-btn-secondary:hover:not(:disabled) {  
+  background-color: #f9fafb;  
+  border-color: #9ca3af;  
+}  
+  
+.eor-btn-large {  
+  padding: 0.75rem 1.5rem;  
+  font-size: 1rem;  
+}  
+  
+.eor-btn-icon {  
+  width: 1rem;  
+  height: 1rem;  
+}  
+  
+/* Finalized State */  
+.eor-finalized-state {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+  text-align: center;  
+  padding: 1rem;  
+}  
+  
+.eor-finalized-icon {  
+  width: 2rem;  
+  height: 2rem;  
+  margin-bottom: 0.5rem;  
+}  
+  
+.eor-finalized-text {  
+  font-size: 0.875rem;  
+  font-weight: 500;  
+  margin: 0;  
+}  
+  
+/* Spinner */  
+.eor-spinner {  
+  width: 1rem;  
+  height: 1rem;  
+  border: 2px solid transparent;  
+  border-top: 2px solid currentColor;  
+  border-radius: 50%;  
+  animation: eor-spin 1s linear infinite;  
+}  
+  
+@keyframes eor-spin {  
+  from { transform: rotate(0deg); }  
+  to { transform: rotate(360deg); }  
+}  
+  
+/* Confirmation Page */  
+.eor-confirmation-container {  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  min-height: calc(100vh - 70px);  
+  padding: 1rem;  
+}  
+  
+.eor-confirmation-card {  
+  background: white;  
+  border-radius: 0.5rem;  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+  padding: 2rem;  
+  max-width: 28rem;  
+  width: 100%;  
+}  
+  
+.eor-confirmation-content {  
+  text-align: center;  
+}  
+  
+.eor-confirmation-icon {  
+  width: 4rem;  
+  height: 4rem;  
+  background-color: #d1fae5;  
+  border-radius: 50%;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  margin: 0 auto 1rem;  
+}  
+  
+.eor-icon-large {  
+  width: 2rem;  
+  height: 2rem;  
+}  
+  
+.eor-confirmation-title {  
+  font-size: 1.125rem;  
+  font-weight: 600;  
+  color: #111827;  
+  margin: 0 0 0.5rem 0;  
+}  
+  
+.eor-confirmation-message {  
+  color: #6b7280;  
+  margin: 0 0 1.5rem 0;  
+}  
+  
+.eor-confirmation-actions {  
+  display: flex;  
+  flex-direction: column;  
+  gap: 0.5rem;  
+}  
+  
+/* Responsive Design */  
+@media (max-width: 768px) {  
+  .eor-wrapper {  
+    margin-left: 0;  
+    padding: 1rem;  
+  }  
+  
+  .eor-header {  
+    flex-direction: column;  
+    align-items: flex-start;  
+    gap: 1rem;  
+  }  
+  
+  .eor-title {  
+    font-size: 1.25rem;  
+  }  
+  
+  .eor-overview-info {  
+    flex-direction: column;  
+    gap: 0.75rem;  
+  }  
+  
+  .eor-stats-grid {  
+    grid-template-columns: 1fr;  
+    gap: 0.75rem;  
+  }  
+  
+  .eor-main-grid {  
+    grid-template-columns: 1fr;  
+  }  
+  
+  .eor-card-content {  
+    padding: 1rem;  
+  }  
+  
+  .eor-delivery-header {  
+    flex-direction: column;  
+    align-items: flex-start;  
+    gap: 0.5rem;  
+  }  
+  
+  .eor-delivery-times {  
+    grid-template-columns: 1fr;  
+    gap: 0.5rem;  
+  }  
+  
+  .eor-export-actions {  
+    gap: 0.75rem;  
+  }  
+}  
+  
+@media (max-width: 480px) {  
+  .eor-wrapper {  
+    padding: 0.75rem;  
+  }  
+  
+  .eor-card-header {  
+    padding: 0.75rem 1rem;  
+  }  
+  
+  .eor-card-content {  
+    padding: 0.75rem;  
+  }  
+  
+  .eor-confirmation-card {  
+    padding: 1.5rem;  
+  }  
+  
+  .eor-btn-large {  
+    padding: 0.625rem 1.25rem;  
+  }  
+}  
+  
+/* Print Styles */  
+@media print {  
+  .eor-layout {  
+    display: block;  
+  }  
+  
+  .eor-wrapper {  
+    margin-left: 0;  
+    margin-top: 0;  
+    padding: 0;  
+  }  
+  
+  .eor-actions-section {  
+    display: none;  
+  }  
+  
+  .eor-card {  
+    break-inside: avoid;  
+    margin-bottom: 1rem;  
+    box-shadow: none;  
+    border: 1px solid #e5e7eb;  
+  }  
+}  
+  
+/* Accessibility */  
+@media (prefers-reduced-motion: reduce) {  
+  .eor-btn,  
+  .eor-spinner {  
+    transition: none;  
+    animation: none;  
+  }  
+}  
+  
+/* Focus States */  
+.eor-btn:focus,  
+.eor-back-button:focus,  
+.eor-textarea:focus {  
+  outline: 2px solid var(--primary-blue);  
+  outline-offset: 2px;  
+}  
+  
+/* Hover Effects */  
+.eor-card:hover {  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+}  
+  
+.eor-delivery-item:hover {  
+  background-color: #f9fafb;  
+}  
+  
+/* High Contrast Mode */  
+@media (prefers-contrast: high) {  
+  .eor-card {  
+    border: 2px solid #000;  
+  }  
+  
+  .eor-btn {  
+    border: 2px solid currentColor;  
+  }  
+}  
+  
+/* CSS pour le bouton "Fin de tournée" à ajouter dans votre page de tournée du jour */  
+.end-route-btn {  
+  display: flex;  
+  align-items: center;  
+  gap: 0.5rem;  
+  padding: 0.75rem 1.5rem;  
+  background-color: var(--primary-blue);  
+  color: white;  
+  border: none;  
+  border-radius: 0.375rem;  
+  font-size: 1rem;  
+  font-weight: 600;  
+  cursor: pointer;  
+  transition: all 0.2s;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+}  
+  
+.end-route-btn:hover {  
+  background-color: var(--light-blue);  
+  transform: translateY(-1px);  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);  
+}  
+  
+.end-route-icon {  
+  width: 1.25rem;  
+  height: 1.25rem;  
+}

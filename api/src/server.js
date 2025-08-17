@@ -22,6 +22,7 @@ const Planification = require('./models/Planification');
 const Livraison = require('./models/Livraison');  
 const LivraisonLine = require('./models/LivraisonLine');
 const planificationRoutes = require('./routes/planification'); 
+const evaluationRoutes = require('./routes/Evaluation');
 
 const Address = require('./models/Address');
 const City = require('./models/City');    
@@ -86,6 +87,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 // Setup WebSocket pour les commandes
 setupWebSocket(io);
 
@@ -98,6 +101,7 @@ app.use('/api/locations', locationRoutes);
 app.use("/api/commands", commandRoutes);
 app.use('/api/livraisons', livraisonRoutes);
 app.use('/api/planifications', planificationRoutes);
+app.use('/api/evaluations', evaluationRoutes);
 
 // Routes métier existantes
 app.use('/api/listeprix', listePrixRoutes);

@@ -22,6 +22,7 @@ import './NextOrderMap.css'
 import livraisonService from '../../../services/livraisonService'
 import { authService } from '../../../services/authService'
 import planificationService from '../../../services/planificationService'
+import { useWebSocket } from '../../../hooks/useWebSocket';  
 
 export default function NextOrderMapPage() {
   const [livraisons, setLivraisons] = useState([])
@@ -38,6 +39,25 @@ export default function NextOrderMapPage() {
   
   const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
+  const { subscribe, isConnected } = useWebSocket(true);  
+
+  useEffect(() => {  
+    if (currentUser?.employee_id && isConnected) {  
+      // S'abonner aux nouvelles assignations  
+      const unsubscribe = subscribe('new_assignment', (data) => {  
+        if (data.employeeId === currentUser.employee_id) {  
+          refreshDeliveryData(); // Recharger les données  
+          setNotification({  
+            type: "info",  
+            message: `Nouvelle commande assignée: ${data.orderNumber}`  
+          });  
+        }  
+      });  
+        
+      return unsubscribe;  
+    }  
+  }, [currentUser, isConnected, subscribe]);
+  
   // Récupérer l'utilisateur connecté
   useEffect(() => {
     const fetchCurrentUser = async () => {

@@ -24,6 +24,8 @@ import LoadingSpinner from '../../../components/common/LoadingSpinner';
 import Pagination from '../../../components/common/Pagination';    
 import OrderDetailsModal from './OrderDetailsModal';    
 import TruckAssignmentModal from './TruckAssignmentModal';    
+
+import { useOrderUpdates } from '../../../hooks/useOrderUpdates';  
     
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';    
     
@@ -38,7 +40,20 @@ const OrderManagement = () => {
       
   // États d'erreur    
   const [error, setError] = useState('');    
-  const [notification, setNotification] = useState(null);    
+  const [notification, setNotification] = useState(null);   
+  
+  const { newOrdersCount, isConnected } = useOrderUpdates();  
+
+  useEffect(() => {  
+  const handleRefresh = () => {  
+    // Recharger les données des commandes  
+    fetchOrders();  
+  };  
+  
+  window.addEventListener('refreshOrders', handleRefresh);  
+  return () => window.removeEventListener('refreshOrders', handleRefresh);  
+}, []);
+
     
   // États pour les filtres et modales    
   const [filters, setFilters] = useState({    
